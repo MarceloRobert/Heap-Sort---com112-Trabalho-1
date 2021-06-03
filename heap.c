@@ -1,29 +1,33 @@
 #include <stdio.h>
 #include "heap.h"
 
-void heapSort(int *vet, int n){
+void heapSort(int *vet, int n, float *qt){
 	int i, aux;
 	for(i=(n-1)/2; i >= 0; i--){
-		criaHeap(vet, i, n-1); //aqui ele cria a árvore Heap ("ordena", só que no modelo de árvore)
+		criaHeap(vet, i, n-1, qt); //aqui ele cria a árvore Heap ("ordena", só que no modelo de árvore)
 	}
 	for(i=(n-1); i>=1; i--){ //aqui ele ordena de verdade, pega o modelo de árvore e o organiza no modelo de vetor. Joga o maior elemento pro final e faz a heap denovo sem o final para achar o novo maior elemento
+		qt[1]++;
 		aux = vet[0];
 		vet[0] = vet[i];
 		vet[i] = aux; 
-		criaHeap(vet, 0, i-1);
+		criaHeap(vet, 0, i-1, qt);
 	}
 }
 
-void criaHeap(int *vet, int pai, int fim){
+void criaHeap(int *vet, int pai, int fim, float *qt){
 	int aux = vet[pai];
 	int filho = 2*pai + 1; //o elemento que está sendo analisado
 	while(filho <= fim){
+		qt[0]++;
 		if(filho < fim){
 			if(vet[filho] < vet[filho+1]){ //1
 				filho = filho + 1;
 			}
 		}
+		qt[0]++;
 		if(vet[filho] > aux){ //2
+			qt[1]++;
 			vet[pai] = vet[filho];
 			pai = filho;
 			filho = 2*pai +1;
@@ -31,6 +35,7 @@ void criaHeap(int *vet, int pai, int fim){
 			filho = fim+1;
 		}
 	}
+	qt[1]++;
 	vet[pai] = aux; //3
 }
 

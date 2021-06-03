@@ -1,0 +1,35 @@
+-----Vetor de tamanho 100-----
+
+
+Teste 1
+Total: 0.000002
+Média: 0.000002
+
+Teste 2
+Total: 0.000015
+Média: 0.000002
+
+Teste 3
+Total: 0.000039
+Média: 0.000001
+
+Teste 4
+Total: 0.000064
+Média: 0.000001-----Vetor de tamanho 10000-----
+
+
+Teste 1
+Total: 0.000009
+Média: 0.000009
+
+Teste 2
+Total: 0.020036
+Média: 0.000020
+
+Teste 3
+Total: 0.059365
+Média: 0.000020
+
+Teste 4
+Total: 0.105428
+Média: 0.000021

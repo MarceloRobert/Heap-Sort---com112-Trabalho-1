@@ -24,11 +24,11 @@
 void geraNumerosAleatorios(int qtNumeros, char nomeArquivo[]){
 	FILE *arquivo;
 	int random;
-	srand(time(NULL));	
+	srand(time(NULL));
 
 	arquivo = fopen(nomeArquivo, "w");
 	for(int i=0; i<qtNumeros;i++){
-		random = rand()%500;
+		random = rand()%qtNumeros;
 		fprintf(arquivo, "%d ", random);
 	}
 
@@ -60,4 +60,44 @@ void imprimeVetor(int vet[], int tam){
 	printf("\n");
 
 	return;
+}
+
+//função de busca sequencial
+int buscaSeq(int vet[], int tam, int elemento){
+
+	for(int i=0; i<tam; i++){
+		if(vet[i] == elemento){
+			return 1;
+		} else {
+			i++;
+		}
+	}
+
+	return 0;
+}
+
+//função de busca binária
+int buscaBin(int vet[], int tam, int elemento){
+	int inicio = 0;
+	int meio;
+	int fim = tam;
+
+	int i=0;
+
+	while(inicio != fim){
+		meio = (inicio+fim)/2;
+		if(vet[meio] > elemento){
+			fim = meio;
+		} else {
+			if(vet[meio] < elemento){
+				inicio = meio+1;
+			} else {
+				//encontrado
+				return 1;
+			}
+		}
+	}
+
+	return 0;
+
 }
